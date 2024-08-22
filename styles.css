@@ -48,13 +48,44 @@ footer{
     gap: 12px;
     padding: 0 24px;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 
     & button{
+        background: url(./src/marco/tinder-icons.webp) no-repeat;
+        background-position: 0px 0px;
+        background-size: 180px;
         width: 34px;
         height: 34px;
         border-radius: 50%;
-        border: 1px solid #ccc;
+        border: 0;
+        cursor: pointer;
+        transition: scale   .3s ease;
+        
+        &:hover{
+            scale: 1.4;
+        }
+
+        &.is-big{
+            background-size: 250px;
+            width: 48px;
+            height: 48px;
+        }
+
+        &.is-undo{
+            background-position: -145px 0;
+        }
+
+        &.is-remove{
+            background-position: -156px 0;
+        }
+
+        &.is-star{
+            background-position: -70px 0;
+        }
+
+        &.is-fav{
+            background-position: -50px 0;
+        }
     }
 }
 
