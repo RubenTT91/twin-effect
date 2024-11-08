@@ -52,7 +52,7 @@ footer{
 
     & button{
         background: url(./src/marco/tinder-icons.webp) no-repeat;
-        background-position: 0px 0px;
+        background-position: 0px;
         background-size: 180px;
         width: 34px;
         height: 34px;
@@ -62,7 +62,7 @@ footer{
         transition: scale   .3s ease;
         
         &:hover{
-            scale: 1.4;
+            scale: 1.2;
         }
 
         &.is-big{
@@ -97,6 +97,7 @@ footer{
     
     & article{
         border-radius: 8px;
+        box-shadow: 0 0 0 10px rgb(0,0,0, .60%);
         cursor: grab;
         inset: 0;
         overflow: hidden;
@@ -116,12 +117,12 @@ footer{
             height: 100%;
             width: 100%;
             position: absolute;
-            inset: 0;            
+            inset: 0;
             background: linear-gradient(
-                to top, 
-                #00000088 20%, 
+                to top,
+                #00000888 20%,
                 transparent 40%);
-            padding-left: 16px;            
+            padding-left: 16px;
             align-items: flex-end;
             z-index: 3;
         }
