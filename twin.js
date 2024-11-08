@@ -1,5 +1,6 @@
 let isAnimating = false;
 let pullDeltaX = 0; // distancia que la card se esta arrastrando
+const DECISION_THRESHOLD = 80;
 
 function startDrag(event){
     if(isAnimating) return;
@@ -38,12 +39,34 @@ function startDrag(event){
         document.removeEventListener('mousedown', onEnd);
         document.removeEventListener('touchmove', onMove, {passive:true});
         document.removeEventListener('touchend', onMove, {passive:true});
-        //limpio las variables de animando y delta X
-        isAnimating = false;
+
+        //Compara la distancia recorrida, con el umbral de decisión que definimos al inicio
+        const decisionMade  =Math.abs(pullDeltaX)>= DECISION_THRESHOLD;
+        console.log(pullDeltaX);
+
+        if (decisionMade){
+         const goRight = pullDeltaX>0;
+         const goLeft = !goRight;
+         actualCard.classList.add(goRight ? 'to-right':'to-left');
+         document.addEventListener('transitionend', ()=>{
+             actualCard.remove();
+         })
+        } else {
+            actualCard.classList.add('reset');
+            actualCard.classList.remove('to-right', 'to-left');
+        }
+
+        // Limpiar variables
+        actualCard.addEventListener('transitionend', ()=>{
+        actualCard.removeAttribute('style');
+        actualCard.classList.remove('reset');
         pullDeltaX = 0;
-        // Restablezco los estilos del css
-        actualCard.style.transform = `none`;
-        actualCard.style.cursor= 'grab';
+        isAnimating = false;
+        })
+
+
+
+        // para eliminar todo
 
     }
 }

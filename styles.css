@@ -12,6 +12,7 @@ min-height: 100vh;
 user-select: none;
 background: #e5e5e5;
 }
+
 main{
     background:url(src/marco/iphone.webp) no-repeat;    
     background-size: contain;
@@ -20,6 +21,7 @@ main{
     display: flex;
     filter: drop-shadow(0 0 2px #000);
 }
+
 section{
     background-color: #f6f6f6;
     width: 100%;
@@ -132,7 +134,23 @@ footer{
             line-height: 1.5;
             font-weight: 400;
         }
-        
+
+        &.to-left, &.to-right{
+        transition: transform .3s ease, rotate .3s ease;
+        }
+
+        &.to-left{
+            transform: translateX(-150%) rotate(-30deg) !important;
+        }
+
+        &.to-right{
+            transform: translateX(150%) rotate(30deg) !important;
+        }
+
+        &.reset{
+            transition: transform .3s ease ;
+            transform: translateX(0) !important;
+        }
 
 
     }
